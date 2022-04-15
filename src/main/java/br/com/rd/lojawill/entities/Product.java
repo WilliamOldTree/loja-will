@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,17 +22,18 @@ public class Product {
 	private String description;
 	
 	@ManyToOne
-	private Category categorie;
+	@JoinColumn(name="category_id")
+	private Category category;
 
 	public Product() {
 		
 	}
 	
-	public Product(Long id, String name, String description, Category categorie) {
+	public Product(Long id, String name, String description, Category category) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.categorie = categorie;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -58,12 +60,12 @@ public class Product {
 		this.description = description;
 	}
 
-	public Category getCategorie() {
-		return categorie;
+	public Category getcategory() {
+		return category;
 	}
 
-	public void setCategorie(Category categorie) {
-		this.categorie = categorie;
+	public void setcategory(Category category) {
+		this.category = category;
 	}
 	
 	
